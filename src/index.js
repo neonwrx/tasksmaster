@@ -12,6 +12,8 @@ import App from './components/App';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 
+import './styles/App.css';
+
 const store = createStore(reducer);
 
 firebaseApp.auth().onAuthStateChanged(user => {

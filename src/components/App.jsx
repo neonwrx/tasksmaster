@@ -22,7 +22,7 @@ class App extends Component {
         <hr />
         <TasksList />
         <hr />
-        <h4>Complete Goals</h4>
+        <h4>Complete Tasks</h4>
           <CompleteGoalList />
           <hr />
         <button

@@ -25,33 +25,35 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className="form-inline" style={{margin: '5%'}}>
+      <div style={{margin: '5%'}}>
         <h2>Sign In</h2>
-        <div className="form-group">
-          <input
-            type="text"
-            style={{marginRight: '5px'}}
-            className="form-control"
-            placeholder="email"
-            onChange={event => this.setState({email: event.target.value})}
-          />
-          <input
-            type="password"
-            style={{marginRight: '5px'}}
-            className="form-control"
-            placeholder="password"
-            onChange={event => this.setState({password: event.target.value})}
-          />
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => this.signIn()}
-          >
-            Sign In
-          </button>
-          <div>{this.state.error.message}</div>
-          <div><Link to={'/signup'}>Sign up instead</Link></div>
+        <div className="form-inline">
+          <div className="form-group">
+            <input
+              type="text"
+              style={{marginRight: '5px'}}
+              className="form-control"
+              placeholder="email"
+              onChange={event => this.setState({email: event.target.value})}
+            />
+            <input
+              type="password"
+              style={{marginRight: '5px'}}
+              className="form-control"
+              placeholder="password"
+              onChange={event => this.setState({password: event.target.value})}
+            />
+            <button
+              className="btn btn-primary"
+              type="button"
+              onClick={() => this.signIn()}
+            >
+              Sign In
+            </button>
+          </div>
         </div>
+        <div>{this.state.error.message}</div>
+        <div><Link to={'/signup'}>Sign up instead</Link></div>
       </div>
     )
   }
