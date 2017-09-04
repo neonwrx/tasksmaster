@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { goalRef } from '../firebase';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -43,10 +44,10 @@ class GoalItem extends Component {
 
   render() {
     // console.log('this.props.goal', this.props.goal);
-    const { creator, title } = this.props.goal;
+    const { creator, title, serverKey } = this.props.goal;
     return (
       <div style={{margin: '5px'}}>
-        <strong>{title}</strong>
+        <Link to={`/tracks/${serverKey}`}><strong>{title}</strong></Link>
         <span style={{marginRight: '5px'}}> submitted by <em>{creator}</em></span>
         <button style={{marginLeft: '5px'}}
           className="btn btn-sm btn-outline-primary"

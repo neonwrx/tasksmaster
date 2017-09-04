@@ -30,7 +30,7 @@ class PersonalTask extends Component {
 function mapStateToProps(state) {
   const { user } = state;
   return {
-    user
+    user,
   }
 }
 

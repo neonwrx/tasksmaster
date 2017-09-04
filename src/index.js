@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router-dom';
-import history from './history';
+
+import createHistory from 'history/createBrowserHistory';
+import { Route } from 'react-router';
+
+import { ConnectedRouter } from 'react-router-redux';
+
 import { firebaseApp, userListRef } from './firebase';
 import { logUser } from './actions';
 import reducer from './reducers';
@@ -11,10 +16,16 @@ import reducer from './reducers';
 import App from './components/App';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Task from './components/Task';
 
 import './styles/App.css';
 
-const store = createStore(reducer);
+// const store = createStore(reducer, applyMiddleware(middleware));
+const store = createStore(
+  reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+const history = createHistory();
+// const middleware = routerMiddleware(history);
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
@@ -46,12 +57,13 @@ firebaseApp.auth().onAuthStateChanged(user => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <ConnectedRouter history={history}>
       <div>
         <Route exact path="/app" component={App} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/tracks/:id" component={Task} />
       </div>
-    </Router>
+    </ConnectedRouter>
   </Provider>, document.getElementById('root')
 )

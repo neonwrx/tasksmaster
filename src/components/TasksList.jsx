@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
-import { setUserTask } from '../actions';
-import { completeGoalRef, goalRef } from '../firebase';
 import PersonalTask from './PersonalTask';
 
 class TasksList extends Component {
-  completeGoal() {
-    const { email } = this.props.user;
-    const { title, serverKey } = this.props.goal;
-    goalRef.child(serverKey).remove();
-    completeGoalRef.push({email, title});
-  }
 
   render() {
     const { name, email } = this.props.user;
@@ -43,4 +35,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { setUserTask })(TasksList);
+export default connect(mapStateToProps, null)(TasksList);
